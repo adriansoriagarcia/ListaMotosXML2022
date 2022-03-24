@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listaMotos>
+    <listaMotos>
+        <cilindrada>0</cilindrada>
+        <marca>HONDA</marca>
+        <modelo>CR</modelo>
+        <peso>0.0</peso>
+        <precio>0</precio>
+    </listaMotos>
+    <listaMotos>
+        <cilindrada>0</cilindrada>
+        <peso>0.0</peso>
+        <precio>0</precio>
+    </listaMotos>
+    <listaMotos>
+        <cilindrada>0</cilindrada>
+        <marca>YAMAHA</marca>
+        <peso>0.0</peso>
+        <precio>0</precio>
+    </listaMotos>
+</listaMotos>
