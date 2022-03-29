@@ -39,7 +39,7 @@ public class App extends Application {
         UtilXML utilXML = new UtilXML(stage, listaMotos);
         paneRoot.getChildren().add(utilXML);
         
-        
+        utilXML.leerArchivoXML(stage, listaMotos);
         
         TableData tabla = new TableData(listaMotos);
         paneRoot.getChildren().add(tabla);
