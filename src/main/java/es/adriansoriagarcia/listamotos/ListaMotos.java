@@ -8,6 +8,7 @@ public class ListaMotos {
     
     public ArrayList<Moto> getListaMotos(){
         return listaMotos;
+        
     }
     public void setListaMotos(ArrayList<Moto> listaMotos){
         this.listaMotos = listaMotos;

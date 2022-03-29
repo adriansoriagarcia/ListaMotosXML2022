@@ -20,6 +20,14 @@ public class Moto {
         this.marca = marca.toUpperCase();
         this.modelo = modelo;
     }
+    public Moto(String marca, String modelo,int precio, float peso, String anio, int cilindrada){
+        this.marca = marca.toUpperCase();
+        this.modelo = modelo;
+        this.precio = precio;
+        this.peso = peso;
+        this.anio = anio;
+        this.cilindrada = cilindrada;
+    }
     
 
     public String getMarca(){
