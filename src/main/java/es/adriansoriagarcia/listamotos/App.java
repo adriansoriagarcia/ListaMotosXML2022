@@ -33,10 +33,13 @@ public class App extends Application {
         listaMotos.getListaMotos().add(moto1);
         listaMotos.getListaMotos().add(moto2);
         listaMotos.getListaMotos().add(moto3);
-
         
-        FileSave file = new FileSave(stage, listaMotos);
-        paneRoot.getChildren().add(file);
+        //System.out.println(listaMotos.getListaMotos());
+        
+        UtilXML utilXML = new UtilXML(stage, listaMotos);
+        paneRoot.getChildren().add(utilXML);
+        
+        
         
         TableData tabla = new TableData(listaMotos);
         paneRoot.getChildren().add(tabla);
