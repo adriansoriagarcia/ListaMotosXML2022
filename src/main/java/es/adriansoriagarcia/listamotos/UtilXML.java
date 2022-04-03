@@ -1,6 +1,5 @@
 package es.adriansoriagarcia.listamotos;
 
-import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -9,27 +8,16 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import org.w3c.dom.NodeList;
 
-public class UtilXML extends Pane {
+public class UtilXML {
     //ListaMotos listaMotos;
-    Button ButtonFileSave = new Button("Guardar");
-    Button ButtonFileOpen = new Button("Abrir");
     
-    public UtilXML(Stage stage, ListaMotos listaMotos){
-        ButtonFileSave.setLayoutX(550);
-        this.getChildren().add(ButtonFileSave);
-        ButtonFileSave.setOnAction((t) -> {
-            guardarDatosXml(stage, listaMotos);
-        });
+
+    public UtilXML(Stage stage, Motos motos){
         
-        ButtonFileOpen.setLayoutX(550);
-        ButtonFileOpen.setLayoutY(50);
-        this.getChildren().add(ButtonFileOpen);
-        ButtonFileOpen.setOnAction((t) -> {
-            leerArchivoXML(stage, listaMotos);
-        });
     }
-    public void guardarDatosXml(Stage stage, ListaMotos listaMotos){
+    public static void guardarDatosXml(Stage stage, Motos motos){
         FileChooser file = new FileChooser();  
         file.setTitle("Save"); 
         file.getExtensionFilters().addAll(
@@ -42,19 +30,19 @@ public class UtilXML extends Pane {
         try {
             java.io.File file1 = file.showSaveDialog(stage);//Guardar archivo 
             contexto = JAXBContext.newInstance(
-                    ListaMotos.class );
+                    Motos.class );
             Marshaller marshaller = contexto.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,
                 Boolean.TRUE);
-            marshaller.marshal(listaMotos, System.out);
-            marshaller.marshal(listaMotos, file1);
+            marshaller.marshal(motos, System.out);
+            marshaller.marshal(motos, file1);
         } catch (JAXBException ex) {
             System.out.println("Se ha producido un error");
             ex.printStackTrace();//muestra el error.
         }
     }
     
-    public ListaMotos leerArchivoXML(Stage stage, ListaMotos listaMotos){
+    public static Motos leerArchivoXML(Stage stage){
         //System.out.println(listaMotos.getListaMotos());
         FileChooser file = new FileChooser();  
         file.setTitle("Open"); 
@@ -66,13 +54,11 @@ public class UtilXML extends Pane {
         
         try {
             java.io.File file1 = file.showOpenDialog(stage);//Abrir archivo 
-            JAXBContext context = JAXBContext.newInstance( ListaMotos.class );
+            JAXBContext context = JAXBContext.newInstance(Motos.class );
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            ListaMotos motos = (ListaMotos)unmarshaller.unmarshal(file1);
-            //listaMotos.setListaMotos();
-            //System.out.println(motos.getListaMotos());
-            //System.out.println("Lista añadida " + "\n" + listaMotos.getListaMotos()); 
-            return motos;
+            Motos motosImport = (Motos)unmarshaller.unmarshal(file1);
+            
+            return motosImport;
         } catch (JAXBException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

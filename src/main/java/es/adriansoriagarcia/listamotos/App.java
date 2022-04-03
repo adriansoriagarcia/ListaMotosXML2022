@@ -1,8 +1,10 @@
 package es.adriansoriagarcia.listamotos;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -11,11 +13,13 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-    ListaMotos listaMotos;
+    Motos motos;
     @Override
     public void start(Stage stage) {
-        Pane paneRoot;
-        paneRoot = new Pane();
+        VBox paneRoot;
+        paneRoot = new VBox();
+        paneRoot.setAlignment(Pos.CENTER);
+        
         var scene = new Scene(paneRoot, 640, 480);
         stage.setScene(scene);
         stage.show();
@@ -29,20 +33,35 @@ public class App extends Application {
         Moto moto2 = new Moto("Husqvarna");
         Moto moto3 = new Moto("Yamaha");
         
-        listaMotos = new ListaMotos();
-        listaMotos.getListaMotos().add(moto1);
-        listaMotos.getListaMotos().add(moto2);
-        listaMotos.getListaMotos().add(moto3);
+        motos = new Motos();
+        motos.getListaMotos().add(moto1);
+        motos.getListaMotos().add(moto2);
+        motos.getListaMotos().add(moto3);
         
         //System.out.println(listaMotos.getListaMotos());
         
-        UtilXML utilXML = new UtilXML(stage, listaMotos);
-        paneRoot.getChildren().add(utilXML);
+        Button ButtonFileSave = new Button("Guardar");
         
-        utilXML.leerArchivoXML(stage, listaMotos);
+        //ButtonFileSave.setLayoutX(550);
+        paneRoot.getChildren().add(ButtonFileSave);
+        ButtonFileSave.setOnAction((t) -> {
+            UtilXML.guardarDatosXml(stage, motos);
+        });
         
-        TableData tabla = new TableData(listaMotos);
-        paneRoot.getChildren().add(tabla);
+        Button ButtonFileOpen = new Button("Abrir");
+        //ButtonFileOpen.setLayoutX(550);
+        //ButtonFileOpen.setLayoutY(50);
+        paneRoot.getChildren().add(ButtonFileOpen);
+        ButtonFileOpen.setOnAction((t) -> {
+            Motos motosImport = UtilXML.leerArchivoXML(stage);
+            System.out.println("Numero de Motos importados: ");
+            System.out.println(motosImport.getListaMotos().size());
+            motos.fusionarMotos(motosImport);//1ª manera de pasar la lista
+            
+        });
+        
+        MuestraMoto muestra = new MuestraMoto();
+        paneRoot.getChildren().add(muestra);
         
         
     }

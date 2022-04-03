@@ -83,6 +83,10 @@ public class Moto {
         String r = "";
         r += "Marca: " + marca + "\n";
         r += "Modelo: " + modelo + "\n";
+        r += "Precio: " + precio + "\n";
+        r += "Peso: " + peso + "\n";
+        r += "Año: " + anio + "\n";
+        r += "Cilindrada: " + cilindrada + "\n";
         return r;
     }
 
