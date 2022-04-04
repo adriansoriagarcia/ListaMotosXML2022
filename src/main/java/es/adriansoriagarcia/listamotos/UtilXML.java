@@ -1,14 +1,13 @@
 package es.adriansoriagarcia.listamotos;
 
-import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+import java.io.File;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.w3c.dom.NodeList;
 
 public class UtilXML {
     //ListaMotos listaMotos;
@@ -28,7 +27,7 @@ public class UtilXML {
 
         JAXBContext contexto;
         try {
-            java.io.File file1 = file.showSaveDialog(stage);//Guardar archivo 
+            File file1 = file.showSaveDialog(stage);//Guardar archivo 
             contexto = JAXBContext.newInstance(
                     Motos.class );
             Marshaller marshaller = contexto.createMarshaller();
@@ -39,6 +38,11 @@ public class UtilXML {
         } catch (JAXBException ex) {
             System.out.println("Se ha producido un error");
             ex.printStackTrace();//muestra el error.
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Error en la aplicacion");
+            alert.showAndWait();
         }
     }
     
@@ -53,7 +57,7 @@ public class UtilXML {
             new FileChooser.ExtensionFilter("All Files", "*.*"));
         
         try {
-            java.io.File file1 = file.showOpenDialog(stage);//Abrir archivo 
+            File file1 = file.showOpenDialog(stage);//Abrir archivo 
             JAXBContext context = JAXBContext.newInstance(Motos.class );
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Motos motosImport = (Motos)unmarshaller.unmarshal(file1);
@@ -62,6 +66,11 @@ public class UtilXML {
         } catch (JAXBException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setTitle("Error en el archivo XML");
+            alert.setContentText("El formato de archivo XML no es correcto");
+            alert.showAndWait();
         }
         return null;
     }

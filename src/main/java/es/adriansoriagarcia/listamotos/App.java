@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,6 +20,7 @@ public class App extends Application {
         VBox paneRoot;
         paneRoot = new VBox();
         paneRoot.setAlignment(Pos.CENTER);
+        paneRoot.setSpacing(30);
         
         var scene = new Scene(paneRoot, 640, 480);
         stage.setScene(scene);
@@ -26,10 +28,6 @@ public class App extends Application {
         
         
         Moto moto1 = new Moto("Honda", "CR");
-        //System.out.println(moto1.getMarca());
-        //moto1.setMarca("Honda");
-        //System.out.println(moto1.getMarca());
-        
         Moto moto2 = new Moto("Husqvarna");
         Moto moto3 = new Moto("Yamaha");
         
@@ -42,15 +40,13 @@ public class App extends Application {
         
         Button ButtonFileSave = new Button("Guardar");
         
-        //ButtonFileSave.setLayoutX(550);
         paneRoot.getChildren().add(ButtonFileSave);
         ButtonFileSave.setOnAction((t) -> {
             UtilXML.guardarDatosXml(stage, motos);
         });
         
-        Button ButtonFileOpen = new Button("Abrir");
-        //ButtonFileOpen.setLayoutX(550);
-        //ButtonFileOpen.setLayoutY(50);
+        Button ButtonFileOpen = new Button("Importar");
+
         paneRoot.getChildren().add(ButtonFileOpen);
         ButtonFileOpen.setOnAction((t) -> {
             Motos motosImport = UtilXML.leerArchivoXML(stage);
@@ -60,7 +56,7 @@ public class App extends Application {
             
         });
         
-        MuestraMoto muestra = new MuestraMoto();
+        MuestraMoto muestra = new MuestraMoto(motos);
         paneRoot.getChildren().add(muestra);
         
         
