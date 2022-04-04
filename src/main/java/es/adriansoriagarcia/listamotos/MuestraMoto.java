@@ -37,6 +37,7 @@ public class MuestraMoto extends VBox {
         TableColumn colCilindrada = new TableColumn<>("Cilindrada");
         colCilindrada.setCellValueFactory(new PropertyValueFactory("cilindrada"));
         tableView.getColumns().addAll(colMarca, colModelo, colPrecio, colPeso, colAnio, colCilindrada);
+        tableView.getStylesheets().add("css/style.css");
         
         this.getChildren().add(tableView);
         
