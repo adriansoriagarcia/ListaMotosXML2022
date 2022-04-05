@@ -12,12 +12,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class MuestraMoto extends VBox {
+    static TableView tableView;
     int motoActual = 0;
     public MuestraMoto(Motos motos){
         this.setAlignment(Pos.CENTER);
         this.setSpacing(30);
  
-        TableView tableView = new TableView();
+        tableView = new TableView();
         TableColumn colMarca = new TableColumn<>("Marca");
         colMarca.setCellValueFactory(new PropertyValueFactory("marca"));//obtiene el valor del dato deseado.
         TableColumn colModelo = new TableColumn<>("Modelo");
@@ -31,21 +32,21 @@ public class MuestraMoto extends VBox {
         TableColumn colCilindrada = new TableColumn<>("Cilindrada");
         colCilindrada.setCellValueFactory(new PropertyValueFactory("cilindrada"));
         tableView.getColumns().addAll(colMarca, colModelo, colPrecio, colPeso, colAnio, colCilindrada);
-        //tableView.getStylesheets().add("css/style.css");
+        tableView.getStylesheets().add("css/style.css");
         //todas las columnas cambiarán su tamaño por igual hasta que se alcance el ancho máximo de TableView
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        tableView.setMaxHeight(100);
+        tableView.setMaxHeight(50);
         this.getChildren().add(tableView);
+//        
+//        Button ButtonSiguiente = new Button("");
+//        ButtonSiguiente.setGraphic(new ImageView("/images/siguiente.PNG"));
+//        this.getChildren().add(ButtonSiguiente);
+//       
+//        Button ButtonAtras = new Button("");
+//        ButtonAtras.setGraphic(new ImageView("/images/anterior.PNG"));
+//        this.getChildren().add(ButtonAtras);
         
-        Button ButtonSiguiente = new Button("");
-        ButtonSiguiente.setGraphic(new ImageView("/images/siguiente.PNG"));
-        this.getChildren().add(ButtonSiguiente);
-       
-        Button ButtonAtras = new Button("");
-        ButtonAtras.setGraphic(new ImageView("/images/anterior.PNG"));
-        this.getChildren().add(ButtonAtras);
-        
-        ButtonAtras.setOnAction((t) -> {
+        /*ButtonAtras.setOnAction((t) -> {
             motoActual--;
             System.out.println("numero de moto: " + motoActual);
             try{
@@ -69,7 +70,6 @@ public class MuestraMoto extends VBox {
             motoActual++;
             System.out.println("numero de moto: " + motoActual);
             try{
-                
                 final ObservableList<Moto> datos = FXCollections.observableArrayList(motos.getListaMotos().get(motoActual));
                 //Agregamos los datos en la tabla, aquí la tabla ya muestra la información.
                 tableView.setItems(datos);
@@ -85,11 +85,14 @@ public class MuestraMoto extends VBox {
 
         }); 
 
-
+        //BotonesInferior.ButtonAtras.setVisible(false);
         final ObservableList<Moto> datos = FXCollections.observableArrayList(motos.getListaMotos().get(motoActual));
         //Agregamos los datos en la tabla, aquí la tabla ya muestra la información.
-        tableView.setItems(datos);
-       
-       
+        tableView.setItems(datos);*/
+        
+        
+
     }
 }
+
+

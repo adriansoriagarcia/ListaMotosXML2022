@@ -1,4 +1,5 @@
 package es.adriansoriagarcia.listamotos;
+import static es.adriansoriagarcia.listamotos.BotonesInferior.total;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,7 +24,7 @@ public class Motos {
     public void fusionarMotos(Motos motosNuevas){
         this.getListaMotos().addAll(motosNuevas.getListaMotos());
         listaMotos.forEach(System.out::println);
-
+        BotonesInferior.total = motosNuevas.getListaMotos().size();
     }
 
     

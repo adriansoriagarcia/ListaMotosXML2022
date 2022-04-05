@@ -26,7 +26,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         
-        
         Moto moto1 = new Moto("Honda", "CR");
         Moto moto2 = new Moto("Husqvarna");
         Moto moto3 = new Moto("Yamaha");
@@ -40,26 +39,14 @@ public class App extends Application {
         
         //System.out.println(listaMotos.getListaMotos());
         
-        Button ButtonFileSave = new Button("");
-        ButtonFileSave.setGraphic(new ImageView("/images/guardar.PNG"));
-        paneRoot.getChildren().add(ButtonFileSave);
-        ButtonFileSave.setOnAction((t) -> {
-            UtilXML.guardarDatosXml(stage, motos);
-        });
-        
-        Button ButtonFileOpen = new Button("");
-        ButtonFileOpen.setGraphic(new ImageView("/images/importar.PNG"));
-        paneRoot.getChildren().add(ButtonFileOpen);
-        ButtonFileOpen.setOnAction((t) -> {
-            Motos motosImport = UtilXML.leerArchivoXML(stage);
-            System.out.println("Numero de Motos importados: ");
-            System.out.println(motosImport.getListaMotos().size());
-            motos.fusionarMotos(motosImport);//1ª manera de pasar la lista
-            
-        });
+        BotonesSuperior botonesSuperior = new BotonesSuperior(stage, motos);
+        paneRoot.getChildren().add(botonesSuperior);
         
         MuestraMoto muestra = new MuestraMoto(motos);
         paneRoot.getChildren().add(muestra);
+        
+        BotonesInferior botonesInferior = new BotonesInferior(motos);
+        paneRoot.getChildren().add(botonesInferior);
         
         
     }
