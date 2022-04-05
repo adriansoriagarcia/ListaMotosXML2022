@@ -7,9 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 public class BotonesInferior extends HBox{
     Button ButtonSiguiente = new Button("");
@@ -17,11 +14,6 @@ public class BotonesInferior extends HBox{
     int motoActual = 0;
     static int total;
     int numMoto = 1;
-    Text textMoto;
-    Text textNum;
-    Text textDe;
-    Text textTotal; 
-    final int TEXT_SIZE = 20;//Declaración e inicialización de usada para el tamaño de letra de los text. 
    public BotonesInferior(Motos motos){
         this.setAlignment(Pos.CENTER);
         this.setSpacing(30);
@@ -30,14 +22,14 @@ public class BotonesInferior extends HBox{
         ButtonSiguiente.setGraphic(new ImageView("/images/siguiente.PNG"));
         this.getChildren().add(ButtonSiguiente);
         MuestraMoto.tableView.requestFocus();
-        total = motos.getListaMotos().size();
+        total += motos.getListaMotos().size();
         ButtonAtras.setOnAction((t) -> {
             motoActual--;
-            /*if(numMoto <= 0) {
+            if(numMoto != 1) {
                 numMoto --;
-            }*/
-            numMoto --;
-            textNum.setText(String.valueOf(numMoto));
+            }
+            //numMoto --;
+            LayoutPanel.textNum.setText(String.valueOf(numMoto));
             System.out.println("numero de moto: " + motoActual);
             try{
                 System.out.println(motos.getListaMotos().get(motoActual));
@@ -64,7 +56,7 @@ public class BotonesInferior extends HBox{
             if (numMoto <= motos.getListaMotos().size() -1) {
                numMoto ++; 
             }
-            textNum.setText(String.valueOf(numMoto));
+            LayoutPanel.textNum.setText(String.valueOf(numMoto));
             
             System.out.println("numero de moto: " + motoActual);
             try{
@@ -91,19 +83,20 @@ public class BotonesInferior extends HBox{
         //Agregamos los datos en la tabla, aquí la tabla ya muestra la información.
         MuestraMoto.tableView.setItems(datos);
         
-        layoutPanel();
+        //layoutPanel();
     
     }
     
     /*
      * Muestra los intentos restantes y el tiempo de la cuenta atras.
     */
-    private void layoutPanel(){
+    /*private void layoutPanel(){
         this.setSpacing(10);//Espacio entre componentes.
         //Texto de etiqueta para tiempo
         textMoto = new Text("Moto");
         textMoto.setFont(Font.font(TEXT_SIZE));
         textMoto.setFill(Color.BLACK);
+        textMoto.setLayoutX(200);
         //Texto para el tiempo restante
         textNum = new Text("1");
         textNum.setFont(Font.font(TEXT_SIZE));
@@ -124,5 +117,5 @@ public class BotonesInferior extends HBox{
 
         //-------------------------------------------------
           
-    }
+    }*/
 }

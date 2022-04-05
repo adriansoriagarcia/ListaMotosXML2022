@@ -48,6 +48,8 @@ public class App extends Application {
         BotonesInferior botonesInferior = new BotonesInferior(motos);
         paneRoot.getChildren().add(botonesInferior);
         
+        LayoutPanel layout = new LayoutPanel();
+        paneRoot.getChildren().add(layout);
         
     }
     
