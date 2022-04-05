@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -30,23 +30,25 @@ public class App extends Application {
         Moto moto1 = new Moto("Honda", "CR");
         Moto moto2 = new Moto("Husqvarna");
         Moto moto3 = new Moto("Yamaha");
+        Moto moto4 = new Moto("KTM","EXC",2000,100,2020,250);
         
         motos = new Motos();
         motos.getListaMotos().add(moto1);
         motos.getListaMotos().add(moto2);
         motos.getListaMotos().add(moto3);
+        motos.getListaMotos().add(moto4);
         
         //System.out.println(listaMotos.getListaMotos());
         
-        Button ButtonFileSave = new Button("Guardar");
-        
+        Button ButtonFileSave = new Button("");
+        ButtonFileSave.setGraphic(new ImageView("/images/guardar.PNG"));
         paneRoot.getChildren().add(ButtonFileSave);
         ButtonFileSave.setOnAction((t) -> {
             UtilXML.guardarDatosXml(stage, motos);
         });
         
-        Button ButtonFileOpen = new Button("Importar");
-
+        Button ButtonFileOpen = new Button("");
+        ButtonFileOpen.setGraphic(new ImageView("/images/importar.PNG"));
         paneRoot.getChildren().add(ButtonFileOpen);
         ButtonFileOpen.setOnAction((t) -> {
             Motos motosImport = UtilXML.leerArchivoXML(stage);

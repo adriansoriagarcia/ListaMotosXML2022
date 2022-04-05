@@ -1,11 +1,12 @@
 package es.adriansoriagarcia.listamotos;
 
+
 public class Moto {
     private String marca;
     private String modelo;
     private int precio;
     private float peso;
-    private String anio;
+    private int anio;
     private int cilindrada;
     
     public Moto(){
@@ -20,7 +21,7 @@ public class Moto {
         this.marca = marca.toUpperCase();
         this.modelo = modelo;
     }
-    public Moto(String marca, String modelo,int precio, float peso, String anio, int cilindrada){
+    public Moto(String marca, String modelo,int precio, float peso, int anio, int cilindrada){
         this.marca = marca.toUpperCase();
         this.modelo = modelo;
         this.precio = precio;
@@ -62,11 +63,11 @@ public class Moto {
         this.peso = peso;
     }
     
-    public String getAnio(){
+    public int getAnio(){
         return anio;
     }
     
-    public void setAnio(String anio){
+    public void setAnio(int anio){
         this.anio = anio;
     }
     
