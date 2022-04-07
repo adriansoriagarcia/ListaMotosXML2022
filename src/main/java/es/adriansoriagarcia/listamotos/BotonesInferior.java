@@ -13,7 +13,8 @@ public class BotonesInferior extends HBox{
     Button ButtonAtras = new Button("");
     int motoActual = 0;
     static int total;
-    int numMoto = 1;
+    static int numMoto ;
+    int cero = 0;
    public BotonesInferior(Motos motos){
         this.setAlignment(Pos.CENTER);
         this.setSpacing(30);
@@ -23,14 +24,25 @@ public class BotonesInferior extends HBox{
         this.getChildren().add(ButtonSiguiente);
         MuestraMoto.tableView.requestFocus();
         total += motos.getListaMotos().size();
+        if (total == 0) {
+            numMoto = 0;
+        } else {
+            numMoto = 1;
+        }
         ButtonAtras.setOnAction((t) -> {
             motoActual--;
-            if(numMoto != 1) {
+            if(motos.getListaMotos().isEmpty()) {
+                numMoto = 0;
+            }
+            if(numMoto <= 1 && motos.getListaMotos().isEmpty()) {
+                numMoto = 0;
+            }
+            if(numMoto != 1 && numMoto > 1) {
                 numMoto --;
             }
             //numMoto --;
             LayoutPanel.textNum.setText(String.valueOf(numMoto));
-            System.out.println("numero de moto: " + motoActual);
+            //System.out.println("numero de moto: " + motoActual);
             try{
                 System.out.println(motos.getListaMotos().get(motoActual));
                final ObservableList<Moto> datos = FXCollections.observableArrayList(motos.getListaMotos().get(motoActual));
@@ -41,8 +53,9 @@ public class BotonesInferior extends HBox{
                ex.printStackTrace();
                motoActual = 0;
                total = 0;
-               numMoto = 1;
+               //numMoto = 1;
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               //alert.getDialogPane().setGraphic(new ImageView("/images/fallo.PNG"));
                alert.setHeaderText(null);
                alert.setTitle("Información");
                alert.setContentText("No existen mas motos");
@@ -51,9 +64,12 @@ public class BotonesInferior extends HBox{
         });
 
         ButtonSiguiente.setOnAction((t) -> {
-            System.out.println(motos.getListaMotos().get(motoActual));
+            //System.out.println(motos.getListaMotos().get(motoActual));
             motoActual++;
-            if (numMoto <= motos.getListaMotos().size() -1) {
+//            if(motos.getListaMotos().isEmpty()) {
+//                numMoto = 0;
+//            }
+            if (numMoto <= motos.getListaMotos().size() -1 ) {
                numMoto ++; 
             }
             LayoutPanel.textNum.setText(String.valueOf(numMoto));
@@ -71,51 +87,21 @@ public class BotonesInferior extends HBox{
                 numMoto = motos.getListaMotos().size();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
+                //alert.getDialogPane().setGraphic(new ImageView("/images/fallo.PNG"));
                 alert.setTitle("Información");
                 alert.setContentText("No existen mas motos");
                 alert.showAndWait();
+            } catch (Exception ex){
+                 ex.printStackTrace();
             }
 
         }); 
 
-        //BotonesInferior.ButtonAtras.setVisible(false);
-        final ObservableList<Moto> datos = FXCollections.observableArrayList(motos.getListaMotos().get(motoActual));
-        //Agregamos los datos en la tabla, aquí la tabla ya muestra la información.
-        MuestraMoto.tableView.setItems(datos);
-        
-        //layoutPanel();
-    
+        if(motos.getListaMotos().size() != 0){
+            final ObservableList<Moto> datos = FXCollections.observableArrayList(motos.getListaMotos().get(motoActual));
+            //Agregamos los datos en la tabla, aquí la tabla ya muestra la información.
+            MuestraMoto.tableView.setItems(datos);
+        }
     }
-    
-    /*
-     * Muestra los intentos restantes y el tiempo de la cuenta atras.
-    */
-    /*private void layoutPanel(){
-        this.setSpacing(10);//Espacio entre componentes.
-        //Texto de etiqueta para tiempo
-        textMoto = new Text("Moto");
-        textMoto.setFont(Font.font(TEXT_SIZE));
-        textMoto.setFill(Color.BLACK);
-        textMoto.setLayoutX(200);
-        //Texto para el tiempo restante
-        textNum = new Text("1");
-        textNum.setFont(Font.font(TEXT_SIZE));
-        textNum.setFill(Color.BLACK);
-        
-        textDe = new Text("de");
-        textDe.setFont(Font.font(TEXT_SIZE));
-        textDe.setFill(Color.BLACK);
-        
-        textTotal = new Text(""+total);
-        textTotal.setFont(Font.font(TEXT_SIZE));
-        textTotal.setFill(Color.BLACK);
-        
-        this.getChildren().add(textMoto);
-        this.getChildren().add(textNum);
-        this.getChildren().add(textDe);
-        this.getChildren().add(textTotal);
 
-        //-------------------------------------------------
-          
-    }*/
 }

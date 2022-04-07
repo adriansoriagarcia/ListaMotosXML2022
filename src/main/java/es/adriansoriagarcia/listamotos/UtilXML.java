@@ -61,7 +61,6 @@ public class UtilXML {
             JAXBContext context = JAXBContext.newInstance(Motos.class );
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Motos motosImport = (Motos)unmarshaller.unmarshal(file1);
-            
             return motosImport;
         } catch (JAXBException e) {
             // TODO Auto-generated catch block
@@ -74,6 +73,4 @@ public class UtilXML {
         }
         return null;
     }
-
-    
 }

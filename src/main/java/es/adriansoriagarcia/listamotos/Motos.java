@@ -27,6 +27,8 @@ public class Motos {
         //BotonesInferior.textTotal.setText(String.valueOf(BotonesInferior.total += motosNuevas.getListaMotos().size()));
         System.out.println("total con añadido " + BotonesInferior.total);
         LayoutPanel.textTotal.setText(String.valueOf(BotonesInferior.total));
+//        LayoutPanel.textNum.setText(String.valueOf(1));
+//        BotonesInferior.numMoto = 1;
     }
 
     

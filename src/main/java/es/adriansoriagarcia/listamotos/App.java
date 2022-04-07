@@ -21,7 +21,7 @@ public class App extends Application {
         paneRoot = new VBox();
         paneRoot.setAlignment(Pos.CENTER);
         paneRoot.setSpacing(30);
-        
+        paneRoot.setStyle("-fx-background-image:url('images/background.jpg');");
         var scene = new Scene(paneRoot, 640, 480);
         stage.setScene(scene);
         stage.show();
@@ -48,7 +48,7 @@ public class App extends Application {
         BotonesInferior botonesInferior = new BotonesInferior(motos);
         paneRoot.getChildren().add(botonesInferior);
         
-        LayoutPanel layout = new LayoutPanel();
+        LayoutPanel layout = new LayoutPanel(motos);
         paneRoot.getChildren().add(layout);
         
     }
