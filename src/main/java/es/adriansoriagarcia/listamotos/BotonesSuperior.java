@@ -6,10 +6,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+/*
+//Clase BotonesSuperior contiene los botones guardar e importar.
+*/
 public class BotonesSuperior extends HBox{
     public BotonesSuperior(Stage stage, Motos motos){
         this.setAlignment(Pos.CENTER);
         this.setSpacing(30);
+        //Boton para guardar los datos.
         Button ButtonFileSave = new Button("");
         ButtonFileSave.setGraphic(new ImageView("/images/guardar.PNG"));
         this.getChildren().add(ButtonFileSave);
@@ -17,6 +21,7 @@ public class BotonesSuperior extends HBox{
             UtilXML.guardarDatosXml(stage, motos);
         });
         
+        //Boton para importr datos.
         Button ButtonFileOpen = new Button("");
         ButtonFileOpen.setGraphic(new ImageView("/images/importar.PNG"));
         this.getChildren().add(ButtonFileOpen);

@@ -3,8 +3,6 @@ package es.adriansoriagarcia.listamotos;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -39,15 +37,19 @@ public class App extends Application {
         
         //System.out.println(listaMotos.getListaMotos());
         
+        //añadimos la clase botonesSuperior al panel.
         BotonesSuperior botonesSuperior = new BotonesSuperior(stage, motos);
         paneRoot.getChildren().add(botonesSuperior);
         
+        //añadimos la clase MuestraMoto al panel.
         MuestraMoto muestra = new MuestraMoto(motos);
         paneRoot.getChildren().add(muestra);
         
+        //añadimos la clase BotonesInferior al panel.
         BotonesInferior botonesInferior = new BotonesInferior(motos);
         paneRoot.getChildren().add(botonesInferior);
         
+        //añadimos la clase LayoutPanel al panel.
         LayoutPanel layout = new LayoutPanel(motos);
         paneRoot.getChildren().add(layout);
         

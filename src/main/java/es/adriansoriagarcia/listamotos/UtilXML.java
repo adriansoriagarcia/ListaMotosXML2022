@@ -9,6 +9,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+
+/*
+//Clase UtilXML se encargar de abrir FileChooser para poder guardar e importar datos a la app.
+*/
 public class UtilXML {
     //ListaMotos listaMotos;
     
@@ -16,6 +20,7 @@ public class UtilXML {
     public UtilXML(Stage stage, Motos motos){
         
     }
+    //Método guardarDatosXml, guarda los datos en un archivo xml.
     public static void guardarDatosXml(Stage stage, Motos motos){
         FileChooser file = new FileChooser();  
         file.setTitle("Save"); 
@@ -46,6 +51,7 @@ public class UtilXML {
         }
     }
     
+    //Método leerArchivoXML, importa los datos de un xml a nuestra app.
     public static Motos leerArchivoXML(Stage stage){
         //System.out.println(listaMotos.getListaMotos());
         FileChooser file = new FileChooser();  

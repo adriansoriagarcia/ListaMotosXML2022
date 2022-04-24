@@ -1,6 +1,8 @@
 package es.adriansoriagarcia.listamotos;
 
-
+/*
+//Clase Moto contiene la estructura de datos de la app.
+*/
 public class Moto {
     private String marca;
     private String modelo;

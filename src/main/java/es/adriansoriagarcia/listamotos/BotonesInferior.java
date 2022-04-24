@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+/*
+//Clase BotonesInferior contiene los botones siguientes y anterior para pasar de una moto a otra
+*/
 public class BotonesInferior extends HBox{
     Button ButtonSiguiente = new Button("");
     Button ButtonAtras = new Button("");
@@ -31,6 +34,7 @@ public class BotonesInferior extends HBox{
         }
         ButtonAtras.setOnAction((t) -> {
             motoActual--;
+            //if para control de errores.
             if(motos.getListaMotos().isEmpty()) {
                 numMoto = 0;
             }
@@ -40,7 +44,7 @@ public class BotonesInferior extends HBox{
             if(numMoto != 1 && numMoto > 1) {
                 numMoto --;
             }
-            //numMoto --;
+            
             LayoutPanel.textNum.setText(String.valueOf(numMoto));
             //System.out.println("numero de moto: " + motoActual);
             try{
@@ -64,11 +68,7 @@ public class BotonesInferior extends HBox{
         });
 
         ButtonSiguiente.setOnAction((t) -> {
-            //System.out.println(motos.getListaMotos().get(motoActual));
             motoActual++;
-//            if(motos.getListaMotos().isEmpty()) {
-//                numMoto = 0;
-//            }
             if (numMoto <= motos.getListaMotos().size() -1 ) {
                numMoto ++; 
             }
@@ -87,7 +87,6 @@ public class BotonesInferior extends HBox{
                 numMoto = motos.getListaMotos().size();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText(null);
-                //alert.getDialogPane().setGraphic(new ImageView("/images/fallo.PNG"));
                 alert.setTitle("Información");
                 alert.setContentText("No existen mas motos");
                 alert.showAndWait();

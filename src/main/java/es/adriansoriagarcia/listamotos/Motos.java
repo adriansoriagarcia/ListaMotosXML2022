@@ -4,6 +4,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+
+/*
+//Clase Motos contiene los arrayList con todo el contenido de datos.
+*/
 public class Motos {
     public Motos( ){
 
@@ -17,18 +21,17 @@ public class Motos {
     @XmlElement(name = "Moto")//Nombre de cada elemento
     public void setListaMotos(ArrayList<Moto> listaMotos){
         this.listaMotos = listaMotos;
-        //this.listaMotos = UtilXML.leerArchivoXML(motos);
+
     }
     
+    //Metodo encargado de fusionar la lista principal con la importada.
     public void fusionarMotos(Motos motosNuevas){
         this.getListaMotos().addAll(motosNuevas.getListaMotos());
         listaMotos.forEach(System.out::println);
         BotonesInferior.total += motosNuevas.getListaMotos().size();
-        //BotonesInferior.textTotal.setText(String.valueOf(BotonesInferior.total += motosNuevas.getListaMotos().size()));
         System.out.println("total con añadido " + BotonesInferior.total);
         LayoutPanel.textTotal.setText(String.valueOf(BotonesInferior.total));
-//        LayoutPanel.textNum.setText(String.valueOf(1));
-//        BotonesInferior.numMoto = 1;
+
     }
 
     

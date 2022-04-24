@@ -6,6 +6,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
+/*
+//Clase MuestraMoto se encargar de mostrar las motos en una tabla creada a continuación.
+*/
 public class MuestraMoto extends VBox {
     static TableView tableView;
     int motoActual = 0;
@@ -13,7 +16,7 @@ public class MuestraMoto extends VBox {
         this.setAlignment(Pos.CENTER);
         this.setSpacing(30);
  
-        tableView = new TableView();
+        tableView = new TableView();//Declaración de la tabla.
         TableColumn colMarca = new TableColumn<>("Marca");
         colMarca.setCellValueFactory(new PropertyValueFactory("marca"));//Atributo.
         TableColumn colModelo = new TableColumn<>("Modelo");
